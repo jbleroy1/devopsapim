@@ -4036,7 +4036,6 @@ paths:
             type: string
           description: UUID car maintenance book or your Id
           required: true
-        - in: someparam
       requestBody:
         required: true
         content:
