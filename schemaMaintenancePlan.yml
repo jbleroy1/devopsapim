@@ -1,0 +1,59 @@
+openapi: 3.0.0
+info:
+  version: 0.0.1
+  title: VDS API
+components:
+  schemas:
+    MaintenanceOperation:
+      description: tobe performed maintenance timeline
+      type: object
+      properties:
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/MaintenancePlan'
+        metadata:
+           $ref: '#/components/schemas/MetadataPagination'       
+    MaintenancePlan:
+      description: Maintenance plan
+      type: array
+      items:
+        $ref: '#/components/schemas/MaintenancePlanItem'        
+    MaintenancePlanItem:
+      description: Maintenance plan item
+      type: object
+      properties:
+          family: 
+            type: "integer"
+            description: Family Identifier       
+          nameFamily:
+            type: "string"
+            description: "Family name"     
+          category:
+            type: "integer"
+            description: Identifier maintenance category"  
+          nameCategory:
+            type: "string"
+            description: "Name maintenance category"  
+          nameMaintenance:
+            type: "string"
+            description: "Name maintenance" 
+          action:
+            type: "string"
+            description: "Action to be carried out" 
+    MetadataPagination:
+      description: Metadata on all paginated results
+      type: object
+      properties:
+        total:
+          description: total items
+          type: integer
+          example: 1
+        page:
+          description: current page number
+          type: integer
+          example: 1
+        numberPerPage:
+          description: items par page
+          type: integer
+          example: 1

@@ -1,0 +1,309 @@
+openapi: 3.0.0
+info:
+  version: 0.0.1
+  title: VDS API
+components:
+  schemas:
+    Oil:
+      description: Oil schema
+      type: object
+      properties:
+        gradeValue:
+          type: string
+          description: ''
+          example: 0W-30
+        gradeQualifier:
+          type: string
+          description: ''
+          example: SAE
+        temperatureDesc:
+          type: string
+          description: ''
+          example: Température ambiante
+        engineCapacityUnit:
+          type: string
+          description: ''
+          example: Litres
+        classificationValue:
+          type: string
+          description: ''
+          example: RN0700
+        engineCapacityLiter:
+          type: integer
+          description: ''
+          example: 4
+        engineCapacityValue:
+          type: integer
+          description: ''
+          example: 4
+        classificationQualifier:
+          type: string
+          description: ''
+          example: OEM
+    PneumaticPressure:
+      type: object
+      properties:
+        bar:
+          type: string
+          description: Presssure in Bar unit (may be empty)
+          example: '2.0'
+        psi:
+          type: string
+          description: Presssure in PSI unit (may be empty)
+          example: '29'
+    Pneumatic:
+      description: Pneumatic schema
+      type: object
+      properties:
+        marking:
+          type: string
+          description: ''
+          example: 145/70 R 13 S
+        location:
+          type : string
+          description: ''
+          example : Front
+        height:
+          type: string
+          description: ''
+          example: '145'
+        width:
+          type: string
+          description: ''
+          example: '70'
+        diameter:
+          type: string
+          description: Diameter (feet)
+          example: '13'
+        rimSize:
+          type: string
+          description: Rim size (feet)
+          example: '13'
+        speed_index:
+          type: string
+          description: ''
+          example: T
+        load_index:
+          type: string
+          description: ''
+          example: '81'
+        regular_load_pressure:
+            $ref: '#/components/schemas/PneumaticPressure'
+        extra_load_pressure:
+            $ref: '#/components/schemas/PneumaticPressure'
+        usage:
+          type : string
+          description : ''
+          example : summer and winter
+    
+    VehicleSheet:
+      description: Vehicle Sheet
+      type: object
+      properties:
+        id:
+          type: string
+          description: sheet technical ID
+          example: fe0c2088-4fb3-4cb1-b7e7-7fbec8602279
+        standard:
+          type: object
+          properties:
+            brand:
+              type: string
+              description: Brand name
+              example: Renault
+            model:
+              type: string
+              description: Model name
+              example: Twingo
+            version:
+              type: string
+              description: Version name
+              example: Twingo 1.2L 16V (C/S06) (93-07)
+            madeFrom:
+              type: string
+              description: Model date start
+              example: '2000'
+            madeUntil:
+              type: string
+              description: Model date end
+              example: '2007'
+        description:
+          type: object
+          properties:
+            numberDoor:
+              type: string
+              description: Number of doors (may be null)
+              example: '3'
+            numberSeat:
+              type: string
+              description: Number of seat (may be null)
+              example: '4'
+            bodyType:
+              type: string
+              description: body type
+              example: CI
+            type:
+              type: string
+              description: Vehicle type
+              example: VL
+            generation:
+              type: string
+              description: Vehicle generation
+              example: null
+            segment:
+              type: string
+              description: Vehicle segment
+              example: null
+            fuel:
+              type: string
+              description: Fuel type
+              example: ESSENCE
+        general:
+          type: object
+          properties:
+            kw:
+              type: integer
+              description: Power in kw
+              example: 55
+            cv:
+              type: integer
+              description: Power in CH
+              example: 75
+            emptyWeight:
+              type: string
+              description: Empty weight (kg)
+              example: '900'
+            totalRunningWeight:
+              type: string
+              description: Running weight (kg)
+              example: '1020'
+            width:
+              type: string
+              description: Vehicle width (cm)
+              example: '171'
+            height:
+              type: string
+              description: Vehicle height (cm)
+              example: '155'
+            length:
+              type: string
+              description: Vehicle length (cm)
+              example: '387'
+            consExurb:
+              type: string
+              description: Extra Urban consommation (may be null)
+              example: '4.8'
+            consMixte:
+              type: string
+              description: Mix consommation (may be null)
+              example: '5.8'
+            consUrb:
+              type: string
+              description: Urban consommation (may be null)
+              example: '7.6'
+            co2:
+              type: string
+              description: CO2 emission (may be null)
+              example: '138'
+            color:
+              type: string
+              description: Vehicle color (may be null)
+              example: JAUNE
+            tankCapavity:
+              type: string
+              description: Capacité du réservoir
+              example: 9 L
+            chestVolume:
+              type: string
+              description: Volulume du coffre
+              example: 320 L
+            picture:
+              type: string
+              description: URL Picture of the vehicle
+              example: >-
+                https://api-vds.vdataservices.com/assets/vehicle/odb/odb-b7a1ec80-a232-45cd-9e97-d9ece95ca114.png
+            userManuel:
+              type: string
+              description: URL user manuel
+              example: >-
+                https://api-vds.vdataservices.com/assets/vehicle/odb/odb-b7a1ec80-a232-45cd-9e97-d9ece95ca114.png
+        technical:
+          type: object
+          properties:
+            engineVolume:
+              type: number
+              description: ''
+              example: 1.2
+            tpGearbox:
+              type: string
+              description: Gearbox type (may be null)
+              example: MECANIQUE
+            numberRatioGearbox:
+              type: string
+              description: Number of gears (may be null)
+              example: '5'
+            drive_axle_position:
+              type: string
+              description: drive axle position type (may be null)
+              example: AVANT
+            clean_up_system:
+              type: string
+              description: vehicle clean-up
+              example: OUI
+            turbo:
+              type: string
+              description: vehicle equipped with a turbo
+              example: OUI
+            oils:
+              type: array
+              items:
+                $ref: '#/components/schemas/Oil'
+        administratif:
+          type: object
+          properties:
+            yearModel:
+              type: integer
+              description: Model year (may be null)
+              example: 2003
+            firstRegistrationDate:
+              type: string
+              format: date
+              description: First Registration Date (may be null)
+              example: '2003-03-04'
+            lastRegistrationDate:
+              type: string
+              format: date
+              description: Last Registration Date (may be null)
+              example: '2003-03-04'
+            vin:
+              type: string
+              description: Vehicle Identification Number, registration card is a unique number assigned to each vehicle
+              example: 'VSSZZZ5FZFR115022'
+            cnit:
+              type: string
+              description: National identification number (France only)
+              example: 'M10SETVP003J060'
+            lastMot:
+              type: string
+              format: date
+              description: Last technical control Date (may be null)
+              example: '2018-12-01'
+        connectivity:
+          type: object
+          properties:
+            image:
+              type: string
+              description: ODB image URL
+              example: >-
+                https://api-vds.vdataservices.com/assets/vehicle/odb/odb-b7a1ec80-a232-45cd-9e97-d9ece95ca114.png
+            steering_whell_position:
+              type: string
+              description: (LHD) Driving Right or (RHD) Left
+              example: LHD
+            eligibleVehicle:
+              type: boolean
+              example: 1
+        rims_and_tires:
+          type: array
+          items:
+            $ref: '#/components/schemas/Pneumatic'

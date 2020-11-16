@@ -1,0 +1,71 @@
+openapi: 3.0.0
+info:
+  version: 0.0.1
+  title: VDS API
+components:
+  schemas:
+    PneumaticPressure:
+      type: object
+      properties:
+        bar:
+          type: string
+          description: Presssure in Bar unit (may be empty)
+          example: '22'
+        psi:
+          type: string
+          description: Presssure in PSI unit (may be empty)
+          example: '31'
+    Pneumatic:
+      description: Pneumatic schema
+      type: object
+      properties:
+        marking:
+          type: string
+          description: ''
+          example: 145/70 R 13 S
+        location:
+          type : string
+          description: ''
+          example : Front
+        height:
+          type: string
+          description: ''
+          example: '145'
+        width:
+          type: string
+          description: ''
+          example: '70'
+        diameter:
+          type: string
+          description: Diameter (feet)
+          example: '13'
+        rimSize:
+          type: string
+          description: Rim size (feet)
+          example: '13'
+        speed_index:
+          type: string
+          description: ''
+          example: T
+        load_index:
+          type: string
+          description: ''
+          example: '81'
+        regular_load_pressure:
+            $ref: '#/components/schemas/PneumaticPressure'
+        extra_load_pressure:
+            $ref: '#/components/schemas/PneumaticPressure'
+        usage:
+          type : string
+          description : ''
+          example : summer and winter
+    CarTireSizes:
+      description: Vehicle Sheet
+      type: object
+      properties:
+        car_designation:
+          type: string
+          description: Vehicle name
+          example: LAGUNA EXPR/PRI 120ch
+
+        
